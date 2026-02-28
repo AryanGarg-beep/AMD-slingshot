@@ -11,7 +11,7 @@ const char* ssid = "Hotspot";
 const char* password = "Connect1234";
 
 // CHANGE THIS TO YOUR LAPTOP IP
-const char* serverUrl = "http://10.125.57.186:5000/detect";
+const char* serverUrl = "http://<PASTE YOU IP HERE>:5000/detect";
 // ========================================
 
 // OLED
