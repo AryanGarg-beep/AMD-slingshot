@@ -83,3 +83,12 @@ pip install ultralytics
 ```bash
 #In the AMD-slingshot folder
 python app.py
+```
+## To run the ESP-32 camera
+```bash
+#copy you url and paste in "server-url" in the .ino file
+ip a #Get IP from this
+
+#Make sure server is active before running the ESP, If HTTP-error comes up, check if the IP matches
+python server.py
+```
