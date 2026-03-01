@@ -7,11 +7,11 @@
 #include <ArduinoJson.h>
 
 // ================= WIFI =================
-const char* ssid = "Hotspot";
-const char* password = "Connect1234";
+const char* ssid = "******";
+const char* password = "******";
 
 // CHANGE THIS TO YOUR LAPTOP IP
-const char* serverUrl = "http://<PASTE YOU IP HERE>:5000/detect";
+const char* serverUrl = "http://<YOU IP HERE>:5000/detect";
 // ========================================
 
 // OLED
@@ -70,14 +70,19 @@ void setupCamera() {
   config.pin_reset = RESET_GPIO_NUM;
   config.xclk_freq_hz = 20000000;
   config.pixel_format = PIXFORMAT_JPEG;
-  config.frame_size = FRAMESIZE_QVGA;  // 320x240
-  config.jpeg_quality = 15;
+  config.frame_size = FRAMESIZE_VGA; 
+  config.jpeg_quality = 14;
   config.fb_count = 1;
 
   if (esp_camera_init(&config) != ESP_OK) {
     showText("Cam Error", 2);
     while (1);
   }
+
+    sensor_t *s = esp_camera_sensor_get();
+  s->set_brightness(s, 2);     
+  s->set_contrast(s, 1);       
+  s->set_saturation(s, 1);     
 }
 
 String detectOnLaptop(camera_fb_t *fb) {
@@ -142,5 +147,5 @@ void loop() {
 
   showText(result, 2);
 
-  delay(5000);
+  delay(2000);
 }
